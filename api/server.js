@@ -7,7 +7,7 @@ const upload = multer({ dest: "uploads/" });
 const app = express();
 const port = 8080;
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -20,10 +20,10 @@ app.get("/nama/:nama", (req, res) => {
   const { umur } = req.query;
 
   if (umur) {
-    return res.send(`Halo ${nama} kamu berumur ${umur} tahun`);
-  } else {
-    return res.send(`Halo ${nama}`);
+    return res.send(`Halo ${nama}, kamu berumur ${umur} tahun`);
   }
+
+  return res.send(`Halo ${nama}`);
 });
 
 app.post("/user", upload.single("avatar"), async (req, res) => {
@@ -37,10 +37,10 @@ app.post("/user", upload.single("avatar"), async (req, res) => {
 
   try {
     const post_data = await db.query(
-      `INSERT INTO user(fullname, email, password, profile_picture) VALUES('${fullname}', '${email}', '${password}', '${req.file.filename}')`
+      `INSERT INTO user(fullname, email, password, profile_picture) VALUES('${fullname}', '${email}', '${password}', '${req.file.filename}')`,
     );
     return res.status(200).json({
-      message: "User created",
+      message: "User Created",
       data: post_data,
     });
   } catch (error) {
@@ -53,10 +53,10 @@ app.post("/user", upload.single("avatar"), async (req, res) => {
 app.get("/users", async (req, res) => {
   try {
     const User = await db.query(
-      `SELECT id, fullname, profile_picture FROM user`
+      "SELECT id, fullname, profile_picture FROM user",
     );
     return res.status(200).json({
-      message: "Successfully getting Users",
+      message: "Berhasil mendapatkan Users",
       data: User,
     });
   } catch (error) {
