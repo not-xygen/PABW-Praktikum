@@ -5,7 +5,7 @@ aplikasi berbasis web.
 
 ## Pertemuan
 
-- **Pertemuan ke-1**: POST, GET, upload, dan download. (https://github.com/not-xygen/PABW-Praktikum/tree/Week1)[Klik Disini]
+- **Pertemuan ke-1**: POST, GET, upload, dan download. [Klik Disini](https://github.com/not-xygen/PABW-Praktikum/tree/Week1)
 - **Pertemuan ke-2**: Halaman signup/register dan signin/login
 - **Pertemuan ke-3**: Cookies, session, user-roles, signout/logout, dan fitur
   "hanya 18+"
