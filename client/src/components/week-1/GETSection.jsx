@@ -15,7 +15,7 @@ export function GETSection() {
       setLoading(true);
       try {
         const response = await client.get("/users");
-        setUserData(response.data);
+        setUserData(response.data.data);
       } catch (error) {
         setError("Gagal mengambil data.");
       } finally {
@@ -26,9 +26,11 @@ export function GETSection() {
     fetchData();
   }, []);
 
+  console.log(userData);
+
   return (
     <div>
-      <h1 className="font-medium text-xl">GET</h1>
+      <h1 className="text-xl font-medium">GET</h1>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -36,7 +38,9 @@ export function GETSection() {
       ) : userData && userData.length > 0 ? (
         <ul>
           {userData.map((user) => (
-            <li key={user.fullname}>{user.fullname}</li>
+            <li key={user.fullname} className="list-disc list-inside">
+              {user.fullname}
+            </li>
           ))}
         </ul>
       ) : (

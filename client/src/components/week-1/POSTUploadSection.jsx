@@ -14,7 +14,7 @@ export function POSTUploadSection() {
 
     try {
       const formData = new FormData();
-      formData.append("nama", nama);
+      formData.append("fullname", nama);
       formData.append("email", email);
       formData.append("password", password);
       formData.append("avatar", file);
@@ -36,16 +36,16 @@ export function POSTUploadSection() {
 
   return (
     <div>
-      <h2 className="font-medium text-xl">POST + Upload</h2>
+      <h2 className="text-xl font-medium">POST + Upload</h2>
       <div>
         <form
-          className="w-1/2 flex flex-col justify-center gap-4"
+          className="flex flex-col justify-center w-1/2 gap-4"
           onSubmit={handleSubmit}>
           <div className="flex flex-col">
             <label>Nama</label>
             <input
               type="text"
-              className="border py-2 px-4"
+              className="px-4 py-2 border"
               value={nama}
               onChange={(e) => setNama(e.target.value)}
             />
@@ -54,7 +54,7 @@ export function POSTUploadSection() {
             <label>Email</label>
             <input
               type="email"
-              className="border py-2 px-4"
+              className="px-4 py-2 border"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -63,7 +63,7 @@ export function POSTUploadSection() {
             <label>Password</label>
             <input
               type="password"
-              className="border py-2 px-4"
+              className="px-4 py-2 border"
               value={password}
               autoComplete="true"
               onChange={(e) => setPassword(e.target.value)}
@@ -74,7 +74,7 @@ export function POSTUploadSection() {
             <input
               type="file"
               accept=".jpg, .png"
-              className="border py-2 px-4"
+              className="px-4 py-2 border"
               onChange={(e) => setFile(e.target.files[0])}
             />
           </div>
@@ -83,7 +83,7 @@ export function POSTUploadSection() {
             <input
               type="submit"
               value="Kirim Data"
-              className="border py-2 px-4 font-medium"
+              className="px-4 py-2 font-medium border"
             />
           </div>
         </form>
