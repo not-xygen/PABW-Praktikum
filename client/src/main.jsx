@@ -2,11 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
-import Week1 from "./pages/week1.jsx";
-import Home from "./pages/home.jsx";
 import "./index.css";
+
 import LoginPage from "./pages/Login.jsx";
 import RegisterPage from "./pages/Register.jsx";
+import Week1Page from "./pages/week1.jsx";
+import HomePage from "./pages/home.jsx";
+import BahayaPage from "./pages/Bahaya.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,11 +17,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <HomePage />,
       },
       {
         path: "week-1",
-        element: <Week1 />,
+        element: <Week1Page />,
       },
     ],
   },
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/bahaya",
+    element: <BahayaPage />,
   },
 ]);
 

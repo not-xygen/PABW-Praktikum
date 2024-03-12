@@ -1,6 +1,12 @@
+import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const [cookies, setCookie] = useCookies(["TOKEN"]);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
@@ -20,7 +26,15 @@ export default function LoginPage() {
         method: "POST",
         body: JSON.stringify(data),
       });
-      alert(response.status);
+      const result = await response.json();
+      const decodedResult = jwtDecode(`${result.data}`);
+      console.log(new Date(Date.now() + decodedResult.exp));
+      setCookie("TOKEN", result.data, {
+        expires: new Date(Date.now() + decodedResult.exp),
+      });
+      if (cookies) {
+        navigate("/");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -30,7 +44,9 @@ export default function LoginPage() {
     <div>
       <div className="flex flex-col items-center justify-center w-screen h-screen gap-4 ">
         <h1 className="text-xl font-bold">Login</h1>
-        <form className="p-5 border rounded-md shadow" onSubmit={handleSubmit}>
+        <form
+          className="flex flex-col items-center p-5 border rounded-md shadow w-max"
+          onSubmit={handleSubmit}>
           <div className="flex flex-col gap-2">
             <label>Email</label>
             <input
@@ -50,7 +66,7 @@ export default function LoginPage() {
           <input
             type="submit"
             value="Login"
-            className="flex w-full mt-2 text-center text-white bg-blue-400 rounded-md"
+            className="px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
           />
         </form>
       </div>

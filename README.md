@@ -10,7 +10,7 @@ aplikasi berbasis web.
 - **Pertemuan ke-2**: Halaman signup/register dan signin/login
   [Klik Disini](https://github.com/not-xygen/PABW-Praktikum/tree/Week2)
 - **Pertemuan ke-3**: Cookies, session, user-roles, signout/logout, dan fitur
-  "hanya 18+"
+  "hanya 18+" [Klik Disini](https://github.com/not-xygen/PABW-Praktikum/tree/Week3)
 - **Pertemuan ke-4**: Logs
 - **Pertemuan ke-5**: Fitur verifikasi alamat surel dan fitur lupa kata sandi
 - **Pertemuan ke-6**: Addons/plugins
