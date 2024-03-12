@@ -47,6 +47,11 @@ export default function HomePage() {
           </button>
         </div>
       </div>
+      <div className="flex flex-col w-full px-8 py-8 space-y-4 transition duration-75 ease-in-out rounded-md shadow">
+        <h1>Minggu 4</h1>
+        <p className="text-2xl font-bold">Logs</p>
+        <p className="text-lg">Logs di-implementasikan di Back-End</p>
+      </div>
       <button
         type="button"
         disabled

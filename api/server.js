@@ -76,6 +76,15 @@ app.post("/daftar", async (req, res) => {
     const post_data =
       await db.query(`INSERT INTO user(fullname, email, password, umur, role) 
                                     VALUES ("${fullname}", "${email}", "${password}", "${umur}", "${role}")`);
+
+    if (post_data) {
+      const logInsert = await db.query(
+        `INSERT INTO logs(pesan, waktu) VALUES ("User baru terdaftar dengan ID ${
+          post_data.insertId
+        }", "${new Date().toISOString().slice(0, 19).replace("T", " ")}")`,
+      );
+    }
+
     res.status(200).json({
       msg: "Berhasil membuat user",
       user: post_data,
