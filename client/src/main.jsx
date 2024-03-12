@@ -5,6 +5,8 @@ import App from "./App.jsx";
 import Week1 from "./pages/week1.jsx";
 import Home from "./pages/home.jsx";
 import "./index.css";
+import LoginPage from "./pages/Login.jsx";
+import RegisterPage from "./pages/Register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
         element: <Week1 />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
   },
 ]);
 

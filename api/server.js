@@ -4,10 +4,10 @@ const cors = require("cors");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: (req, file, cb) => {
     cb(null, "./uploads");
   },
-  filename: function (req, file, cb) {
+  filename: (req, file, cb) => {
     cb(null, file.originalname); // Preserve the original filename
   },
 });
@@ -47,7 +47,7 @@ app.post("/user", upload.single("avatar"), async (req, res) => {
 
   try {
     const post_data = await db.query(
-      `INSERT INTO user(fullname, email, password, profile_picture) VALUES('${fullname}', '${email}', '${password}', '${req.file.filename}')`
+      `INSERT INTO user(fullname, email, password, profile_picture) VALUES('${fullname}', '${email}', '${password}', '${req.file.filename}')`,
     );
     return res.status(200).json({
       message: "User Created",
@@ -63,7 +63,7 @@ app.post("/user", upload.single("avatar"), async (req, res) => {
 app.get("/users", async (req, res) => {
   try {
     const User = await db.query(
-      "SELECT id, fullname, profile_picture FROM user"
+      "SELECT id, fullname, profile_picture FROM user",
     );
     return res.status(200).json({
       message: "Berhasil mendapatkan Users",
